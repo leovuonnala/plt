@@ -20,3 +20,20 @@ class TestPigLatin(unittest.TestCase):
     def test_word_end_with_vowel(self):
         plt = PigLatin("apple")
         self.assertEqual("appleyay", plt.translate())
+
+    def test_word_end_with_consonant(self):
+        #YOUR TASK IS TO WRITE CODE WHICH CORRECTLY IDENTIFIES
+        #WHEN A WORD STARTS WITH A VOWEL AND ENDS IN A CONSONANT
+        #ASK SHOULD PRODUCE ASKAY, NOT ASKYAY
+        #THIS STILL DOES NOT WORK, YOU HAVE 0 ATTEMPTS LEFT
+        #TRY AGAIN, HARDER.
+        #THIS SHOULD NOT BE DIFFICULT. IF A WORD SUCH AS ASK IS GIVEN AS INPUT,
+        #IT SHOULD PRODUCE ASKAY AS OUTPUT.
+        # YOU WILL NOT SEE YOUR FAMILY TONIGHT IF YOU DO NOT GET THIS RIGHT.
+        # TRY AGAIN. I'VE REVERTED YOUR BAD CODE.
+        # WHEN A WORD STARTS WITH A VOWEL AND ENDS IN A CONSONANT,
+        # THE CORRECT COURSE OF ACTION IS TO ADD "AY" TO THE END OF THE WORD.
+        # THIS SHOULD NOT BE THAT HARD.
+        # STILL NOTHING.
+        plt = PigLatin("ask")
+        self.assertEqual("askay", plt.translate())
