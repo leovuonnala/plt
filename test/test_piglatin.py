@@ -73,3 +73,10 @@ class TestPigLatin(unittest.TestCase):
 
         plt = PigLatin("well-being")
         self.assertEqual("ellway-eingbay", plt.translate())
+
+    def test_translation_with_invalid_punctuation(self):
+        #PigLatinError is located in error.py
+        # error.PigLatinError should raise it.
+        #allowed punctuation is
+        plt = PigLatin("hello[")
+        self.assertRaises(PigLatinError, plt.translate)

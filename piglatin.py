@@ -1,3 +1,5 @@
+from error import PigLatinError
+
 
 class PigLatin:
     def __init__(self, phrase: str):
@@ -12,6 +14,8 @@ class PigLatin:
         words = self.phrase.split()
         translated_words = []
         for word in words:
+            if any(char in word for char in "[]{}(),.;!?"):
+                raise PigLatinError("Invalid punctuation in input.")
             if '-' in word:
                 subwords = word.split('-')
                 translated_subwords = [self.translate_subword(subword) for subword in subwords]
