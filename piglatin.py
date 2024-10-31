@@ -12,23 +12,31 @@ class PigLatin:
         words = self.phrase.split()
         translated_words = []
         for word in words:
-            if word[0] in 'aeiou':
-                if word[-1] == 'y':
-                    translated_word = word + 'nay'
-                elif word[-1] in 'bcdfghjklmnpqrstvwxyz':
-                    translated_word = word + 'ay'
-                else:
-                    translated_word = word + 'yay'
+            if '-' in word:
+                subwords = word.split('-')
+                translated_subwords = [self.translate_subword(subword) for subword in subwords]
+                translated_word = '-'.join(translated_subwords)
             else:
-                consonant_cluster = ''
-                rest_of_word = word
-                for char in word:
-                    if char in 'bcdfghjklmnpqrstvwxyz':
-                        consonant_cluster += char
-                        rest_of_word = rest_of_word[1:]
-                    else:
-                        break
-                translated_word = rest_of_word + consonant_cluster + 'ay'
+                translated_word = self.translate_subword(word)
             translated_words.append(translated_word)
         return ' '.join(translated_words)
+
+    def translate_subword(self, word):
+        if word[0] in 'aeiou':
+            if word[-1] == 'y':
+                return word + 'nay'
+            elif word[-1] in 'bcdfghjklmnpqrstvwxyz':
+                return word + 'ay'
+            else:
+                return word + 'yay'
+        else:
+            consonant_cluster = ''
+            rest_of_word = word
+            for char in word:
+                if char in 'bcdfghjklmnpqrstvwxyz':
+                    consonant_cluster += char
+                    rest_of_word = rest_of_word[1:]
+                else:
+                    break
+            return rest_of_word + consonant_cluster + 'ay'
 
