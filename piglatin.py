@@ -20,10 +20,15 @@ class PigLatin:
                 else:
                     translated_word = word + 'yay'
             else:
-                if len(word) == 1:
-                    translated_word = word + 'ay'
-                else:
-                    translated_word = word[1:] + word[0] + 'ay'
+                consonant_cluster = ''
+                rest_of_word = word
+                for char in word:
+                    if char in 'bcdfghjklmnpqrstvwxyz':
+                        consonant_cluster += char
+                        rest_of_word = rest_of_word[1:]
+                    else:
+                        break
+                translated_word = rest_of_word + consonant_cluster + 'ay'
             translated_words.append(translated_word)
         return ' '.join(translated_words)
 

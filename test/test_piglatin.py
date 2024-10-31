@@ -45,3 +45,13 @@ class TestPigLatin(unittest.TestCase):
 
         plt = PigLatin("hello")
         self.assertEqual("ellohay", plt.translate())
+
+    def test_word_starting_with_multiple_consonants(self):
+        #The input phrase can be a single word starting with more consonants. In that case, the translator applies the following translation rule:
+        #Remove the consonants from the beginning of the word and add them to the end of the word. Finally, append “ay” to the end of the resulting word.
+        #Requirement:
+        #Implement PigLatinTranslator.translate(self) -> str to let the translator translate a word starting with more consonants.
+        #Example:
+        #The translation of “known” is “ownknay”.
+        plt = PigLatin("known")
+        self.assertEqual("ownknay", plt.translate())
